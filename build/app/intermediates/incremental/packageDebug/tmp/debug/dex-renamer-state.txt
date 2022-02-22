@@ -1,0 +1,7 @@
+#Tue Feb 22 12:36:16 EET 2022
+base.0=E\:\\graduation project in github m3lomatk\\flutter_auth\\build\\app\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=E\:\\graduation project in github m3lomatk\\flutter_auth\\build\\app\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
