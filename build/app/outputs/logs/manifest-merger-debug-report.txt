@@ -50,7 +50,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Sa
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.6.0] C:\Users\Sama\.gradle\caches\transforms-2\files-2.1\122df2e57d294d1a53db26bbc3b813c1\core-1.6.0\AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:4:9-37
+		ADDED from E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:4:9-33
 	android:icon
 		ADDED from E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:5:9-43
 activity#com.example.flutter_auth.MainActivity
