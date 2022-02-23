@@ -22,8 +22,8 @@
 18        android:debuggable="true"
 19        android:icon="@mipmap/ic_launcher"
 19-->E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:5:9-43
-20        android:label="flutter_auth" >
-20-->E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:4:9-37
+20        android:label="M3lomatk" >
+20-->E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:4:9-33
 21        <activity
 21-->E:\graduation project in github m3lomatk\flutter_auth\android\app\src\main\AndroidManifest.xml:6:9-34:20
 22            android:name="com.example.flutter_auth.MainActivity"
