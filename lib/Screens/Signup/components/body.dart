@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Login/login_screen.dart';
@@ -11,101 +13,166 @@ import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_email_field.dart';
 import 'package:flutter_auth/components/rounded_mobile_field.dart';
 import 'package:flutter_auth/components/rounded_password_field.dart';
+import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/home/components/body.dart';
 import 'package:flutter_auth/home/home1.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
+  static String username, email, phone, password, rePassword;
+  final CollectionReference users =
+      FirebaseFirestore.instance.collection('users');
+
+  FirebaseAuth instance = FirebaseAuth.instance;
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Background(
-      child: SingleChildScrollView(
-        child: Form(
-          key: formkey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                height: 20,
-              ),
-              Text(
-                "Register",
-                style:
-                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-              ),
-              SizedBox(height: size.height * 0.03),
-              SvgPicture.asset(
-                "assets/icons/signup.svg",
-                height: size.height * 0.35,
-              ),
-              RoundedInputField(
-                hintText: "UserName",
-                onChanged: (value) {},
-              ),
-              RoundedEmailField(
-                hintText: "Email",
-                onChanged: (value) {},
-              ),
-              RoundedMopileField(
-                hintText: "Mobile Number",
-                onChanged: (value) {},
-              ),
-              RoundedPasswordField(
-                onChanged: (value) {},
-              ),
-              RoundedConfirmPassField(
-                onChanged: (value) {},
-              ),
-              SizedBox(height: size.height * 0.03),
-              AlreadyHaveAnAccountCheck(
-                login: false,
-                press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginScreen();
-                      },
-                    ),
-                  );
-                },
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              MaterialButton(
-                color: Colors.deepPurple,
-                shape: const CircleBorder(),
-                onPressed: () {
-                  //press: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Home();
-                      },
-                    ),
-                  );
-                  //},
-                },
-                child: const Padding(
-                  padding: EdgeInsets.all(15),
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
+    return StreamBuilder<QuerySnapshot>(
+        stream: users
+            .where('email', isEqualTo: email)
+            .where('password', isEqualTo: password)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Background(
+              child: SingleChildScrollView(
+                child: Form(
+                  key: formkey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                        "Register",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.white),
+                      ),
+                      SizedBox(height: size.height * 0.03),
+                      SvgPicture.asset(
+                        "assets/icons/signup.svg",
+                        height: size.height * 0.35,
+                      ),
+                      RoundedInputField(
+                        hintText: "UserName",
+                        onChanged: (value) {
+                          username = value;
+                        },
+                      ),
+                      RoundedEmailField(
+                        hintText: "Email",
+                        onChanged: (value) {
+                          email = value;
+                        },
+                      ),
+                      RoundedMopileField(
+                        hintText: "Mobile Number",
+                        onChanged: (value) {
+                          phone = value;
+                        },
+                      ),
+                      RoundedPasswordField(
+                        onChanged: (value) {
+                          password = value;
+                        },
+                      ),
+                      RoundedConfirmPassField(
+                        onChanged: (value) {
+                          rePassword = value;
+                        },
+                      ),
+                      SizedBox(height: size.height * 0.03),
+                      AlreadyHaveAnAccountCheck(
+                        login: false,
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return LoginScreen();
+                              },
+                            ),
+                          );
+                        },
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      MaterialButton(
+                        color: Colors.deepPurple,
+                        shape: const CircleBorder(),
+                        onPressed: () async {
+                          var auth = FirebaseAuth.instance;
+
+                          if (formkey.currentState.validate()) {
+                            // islooding = true;
+                            // setState(() {});
+                            try {
+                              await registeruser(auth);
+
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (BuildContext context) => Home(),
+                                ),
+                              );
+                              users.add({
+                                KUsername: username,
+                                KEmail: email,
+                                KPhone: phone,
+                                KPassword: password,
+                                KRePassword: rePassword,
+                              });
+                            } on FirebaseAuthException catch (e) {
+                              if (e.code == 'week-password') {
+                                showSnackbar(context,
+                                    'The password provided is too weak.');
+                              } else if (e.code == 'email-already-in-use') {
+                                showSnackbar(context,
+                                    'The account already exists for that email.');
+                              }
+                            } catch (e) {
+                              showSnackbar(context, e.toString());
+                            }
+                            // islooding = false;
+                            // setState(() {});
+                          }
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Icon(
+                            Icons.arrow_forward,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      )
+                    ],
                   ),
                 ),
               ),
-              SizedBox(
-                height: 20,
-              )
-            ],
-          ),
-        ),
+            );
+          } else {
+            return Text('Loading...');
+          }
+        });
+  }
+
+  void showSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
       ),
     );
+  }
+
+  Future<void> registeruser(FirebaseAuth auth) async {
+    UserCredential user = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password);
   }
 }

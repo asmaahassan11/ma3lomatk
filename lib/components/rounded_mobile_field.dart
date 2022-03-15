@@ -5,18 +5,21 @@ import 'package:flutter_auth/constants.dart';
 class RoundedMopileField extends StatelessWidget {
   final String hintText;
   final IconData icon;
-  final ValueChanged<String> onChanged;
-  const RoundedMopileField({
-    Key key,
-    this.hintText,
-    this.icon = Icons.phone,
-    this.onChanged,
-  }) : super(key: key);
+  final Function(String) onChanged;
+  final TextEditingController Controller;
+  const RoundedMopileField(
+      {Key key,
+      this.hintText,
+      this.icon = Icons.phone,
+      this.onChanged,
+      this.Controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextFormField(
+        controller: Controller,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(

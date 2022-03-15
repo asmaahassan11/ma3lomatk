@@ -4,19 +4,22 @@ import 'package:flutter_auth/constants.dart';
 
 class RoundedEmailField extends StatelessWidget {
   final String hintText;
+  final Function(String) onChanged;
+  final TextEditingController Controller;
   final IconData icon;
-  final ValueChanged<String> onChanged;
-  const RoundedEmailField({
-    Key key,
-    this.hintText,
-    this.icon = Icons.email_outlined,
-    this.onChanged,
-  }) : super(key: key);
+  const RoundedEmailField(
+      {Key key,
+      this.hintText,
+      this.icon = Icons.email_outlined,
+      this.onChanged,
+      this.Controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextFormField(
+        controller: Controller,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
         decoration: InputDecoration(
