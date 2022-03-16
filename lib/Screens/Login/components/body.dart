@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Login/components/background.dart';
 import 'package:flutter_auth/Screens/Login/components/small_social_icon.dart';
@@ -12,10 +14,16 @@ import 'package:flutter_auth/components/rounded_password_field.dart';
 import 'package:flutter_auth/home/home1.dart';
 import 'package:flutter_auth/profile/profile_screen.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../constants.dart';
+import '../../../models/users.dart';
 
 class Body extends StatelessWidget {
+  String email, password;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   final bool login;
@@ -49,11 +57,17 @@ class Body extends StatelessWidget {
               ),
               SizedBox(height: size.height * 0.03),
               RoundedEmailField(
+                Controller: emailController,
                 hintText: "Your Email",
-                onChanged: (value) {},
+                onChanged: (value) {
+                  email = value;
+                },
               ),
               RoundedPasswordField(
-                onChanged: (value) {},
+                Controller: passwordController,
+                onChanged: (value) {
+                  password = value;
+                },
               ),
               /*RoundedButton(
                 text: "LOGIN",
@@ -111,18 +125,52 @@ class Body extends StatelessWidget {
               MaterialButton(
                 color: Colors.deepPurple,
                 shape: const CircleBorder(),
-                onPressed: () {
-                  //press: () {
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setString('email', emailController.text);
+                  prefs.setString('password', passwordController.text);
                   if (formkey.currentState.validate()) {
-                    //press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return Home();
-                        },
-                      ),
-                    );
+                    // islooding = true;
+                    // setState(() {});
+                    try {
+                      //await loginUser(auth);
+
+                      QuerySnapshot value = await FirebaseFirestore.instance
+                          .collection('users')
+                          .where(KEmail, isEqualTo: email)
+                          .where(KPassword, isEqualTo: password)
+                          .snapshots()
+                          .first;
+                      // print(value.docs[0].data());
+                      user = UserM.fromJson(
+                          value.docs[0].data() as Map<String, dynamic>);
+                      // print(user!.username);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) => Home(),
+                        ),
+                      );
+                      // Navigator.pushNamed(context, profile.id,
+                      //     arguments: {
+                      //       KUsername: user!.username,
+                      //       KEmail: email,
+                      //       KAge: user!.age,
+                      //       KGender: user!.gender
+                      //     });
+                    } on FirebaseAuthException catch (e) {
+                      if (e.code == 'user-not-found') {
+                        showSnackbar(context, 'No user found for that email.');
+                      } else if (e.code == 'wrong-password') {
+                        showSnackbar(
+                            context, 'Wrong password provided for that user.');
+                      }
+                    } catch (e) {
+                      showSnackbar(context, e.toString());
+                    }
+                    // islooding = false;
+                    // setState(() {});
                   }
                 },
                 child: const Padding(
@@ -141,5 +189,18 @@ class Body extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void showSnackbar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+      ),
+    );
+  }
+
+  Future<void> loginUser() async {
+    UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: password);
   }
 }
