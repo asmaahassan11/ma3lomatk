@@ -28,9 +28,9 @@ class RoundedConfirmPassField extends StatelessWidget {
           border: InputBorder.none,
         ),
         validator: (value) {
-          if (value.isEmpty) {
-            return 'Required !';
-          }
+          if (value.isEmpty) return 'Required !';
+
+          if (value != Controller.text) return 'Not Match';
           return null;
         },
       ),

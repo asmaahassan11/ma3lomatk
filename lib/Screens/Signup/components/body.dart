@@ -113,12 +113,14 @@ class Body extends StatelessWidget {
                             try {
                               await registeruser(auth);
 
-                              Navigator.pushReplacement(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (BuildContext context) => Home(),
-                                ),
-                              );
+                              // Navigator.pushNamed(context, profile.id,
+                              //     arguments: {
+                              //       KUsername: username,
+                              //       KEmail: email,
+                              //       KPhone: phone,
+                              //       KPassword: password,
+                              //       KRePassword:rePassword,
+                              //     });
                               users.add({
                                 KUsername: username,
                                 KEmail: email,
