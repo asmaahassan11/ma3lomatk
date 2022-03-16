@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "145504140623",
+    "project_id": "graduation-d37d4",
+    "storage_bucket": "graduation-d37d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145504140623:android:e33127c671fcd07048993a",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "145504140623-6i4caokv64ct630n6dkr0dhbsveg647b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBl4QPBQmUxGDhXuDCc0fm40bxSqadiWc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "145504140623-6i4caokv64ct630n6dkr0dhbsveg647b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
