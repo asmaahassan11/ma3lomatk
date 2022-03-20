@@ -6,9 +6,15 @@ class UserM {
   String phone;
   String password;
   String rePassword;
+  String imageurl;
 
   UserM(
-      {this.username, this.email, this.phone, this.password, this.rePassword});
+      {this.username,
+      this.email,
+      this.phone,
+      this.password,
+      this.rePassword,
+      this.imageurl});
 
   UserM.fromJson(Map<String, dynamic> json) {
     username = json['username'];
@@ -17,6 +23,7 @@ class UserM {
 
     password = json['password'];
     rePassword = json['rePassword'];
+    imageurl = json['imageurl'];
   }
 
   Map<String, dynamic> toJson() {
@@ -27,6 +34,7 @@ class UserM {
     data['phone'] = this.phone;
     data['password'] = this.password;
     data['rePassword'] = this.rePassword;
+    data['imageurl'] = this.imageurl;
 
     return data;
   }

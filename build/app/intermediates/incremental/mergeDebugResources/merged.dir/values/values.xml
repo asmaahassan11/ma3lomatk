@@ -124,13 +124,13 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
-    <string name="default_web_client_id" translatable="false">145504140623-6i4caokv64ct630n6dkr0dhbsveg647b.apps.googleusercontent.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">145504140623</string>
-    <string name="google_api_key" translatable="false">AIzaSyBBl4QPBQmUxGDhXuDCc0fm40bxSqadiWc</string>
-    <string name="google_app_id" translatable="false">1:145504140623:android:e33127c671fcd07048993a</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBBl4QPBQmUxGDhXuDCc0fm40bxSqadiWc</string>
-    <string name="google_storage_bucket" translatable="false">graduation-d37d4.appspot.com</string>
-    <string name="project_id" translatable="false">graduation-d37d4</string>
+    <string name="default_web_client_id" translatable="false">557302315297-v1ucora6ett2daqpu8b3jlfjrd0i5kgp.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">557302315297</string>
+    <string name="google_api_key" translatable="false">AIzaSyDCaQKI3jjraI_MBD9eBYRXAcD9XgTPNgk</string>
+    <string name="google_app_id" translatable="false">1:557302315297:android:8b2e9a5340bf016dcaa660</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDCaQKI3jjraI_MBD9eBYRXAcD9XgTPNgk</string>
+    <string name="google_storage_bucket" translatable="false">graduation-bf501.appspot.com</string>
+    <string name="project_id" translatable="false">graduation-bf501</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <style name="LaunchTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <!-- Show a splash screen on the activity. Automatically removed when

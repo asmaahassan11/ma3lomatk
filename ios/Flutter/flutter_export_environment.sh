@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
-export "FLUTTER_ROOT=C:\flutter"
-export "FLUTTER_APPLICATION_PATH=C:\Users\Sama\Downloads\flutter_auth-20220222T092002Z-001\flutter_auth"
+export "FLUTTER_ROOT=D:\Programs\Flutter\flutter_windows_2.10.0-stable\flutter"
+export "FLUTTER_APPLICATION_PATH=D:\Programs\Flutter\Apps\Graduation\ma3lomatk"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"
