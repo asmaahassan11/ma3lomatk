@@ -1,3 +1,4 @@
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/home/home1.dart';
@@ -21,14 +22,17 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-   return MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           toolbarHeight: 40.0, // double
-          title: Text("Profile", textAlign: TextAlign.center,),
+          title: Text(
+            "Profile",
+            textAlign: TextAlign.center,
+          ),
           leading: Builder(
             builder: (BuildContext context) {
               return IconButton(
@@ -49,60 +53,90 @@ class Body extends StatelessWidget {
               );
             },
           ),
-         // leading: Icon(Icons.arrow_back_ios_outlined),
+          // leading: Icon(Icons.arrow_back_ios_outlined),
           centerTitle: true,
         ),
-    body: Background(
-        child: SingleChildScrollView(
-      //padding: EdgeInsets.symmetric(vertical: 30),
-      child: Column(
-        children: [
-          SizedBox(
-            height: size.height * 0.186,
+        body: Background(
+          child: SingleChildScrollView(
+            //padding: EdgeInsets.symmetric(vertical: 30),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: size.height * 0.186,
+                ),
+                ProfilePic(),
+                SizedBox(height: 20),
+                ProfileMenu(
+                  text: user.username,
+                  icon: "assets/icons/User Icon.svg",
+                  press: () => {},
+                ),
+                ProfileMenu(
+                  text: user.email,
+                  icon: "assets/icons/Bell.svg",
+                  press: () {},
+                ),
+                ProfileMenu(
+                  text: user.phone,
+                  icon: "assets/icons/Settings.svg",
+                  press: () {},
+                ),
+                ProfileMenu(
+                  text: user.password,
+                  icon: "assets/icons/Question mark.svg",
+                  press: () {},
+                ),
+                Text(
+                  "Social Media Accounts",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black45),
+                ),
+                ProfileIcon(
+                  icon: "assets/icons/FaceBo.svg",
+                  text: "Facebook Profile Link",
+                  press: () {},
+                ),
+                ProfileIcon(
+                  icon: "assets/icons/instagram-round.svg",
+                  text: "Instagram Username",
+                  press: () {},
+                ),
+                ProfileIcon(
+                  icon: "assets/icons/snapchat-round.svg",
+                  text: "Snapchat Username",
+                  press: () {},
+                ),
+              ],
+            ),
           ),
-          ProfilePic(),
-          SizedBox(height: 20),
-          ProfileMenu(
-            text: "Username",
-            icon: "assets/icons/User Icon.svg",
-            press: () => {},
-          ),
-          ProfileMenu(
-            text: "Email",
-            icon: "assets/icons/Bell.svg",
-            press: () {},
-          ),
-          ProfileMenu(
-            text: "Mobile Number",
-            icon: "assets/icons/Settings.svg",
-            press: () {},
-          ),
-          ProfileMenu(
-            text: "Password",
-            icon: "assets/icons/Question mark.svg",
-            press: () {},
-          ),
-          Text("Social Media Accounts", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45),),
-          ProfileIcon(
-            icon: "assets/icons/FaceBo.svg",
-            text: "Facebook Profile Link",
-            press: () {},
-          ),
-          ProfileIcon(
-            icon: "assets/icons/instagram-round.svg",
-            text: "Instagram Username",
-            press: () {},
-          ),
-          ProfileIcon(
-            icon: "assets/icons/snapchat-round.svg",
-            text: "Snapchat Username",
-            press: () {},
-          ),
-        ],
-      ),
         ),
-    ),
       ),
     );
   }
+
+  // void uploadImage(BuildContext context) async{
+
+  //   try {
+
+  //     FirebaseStorage storage =  FirebaseStorage.instanceFor(
+  //     bucket: 'gs://graduation-bf501.appspot.com');
+  //     Reference  ref = storage.ref().child(p.basename(image.path));
+
+  //     UploadTask uploadTask = ref.putFile(image);
+
+  //     TaskSnapshot taskSnapshot = await uploadTask;
+  //      Scaffold.of(context).showSnackBar(SnackBar(content: Text('success'),),);
+  //     String imageurl = await taskSnapshot.ref.getDownloadURL();
+
+  //     print('url $imageurl');
+  //     setState(() {
+  //       imageurl = imageurl;
+  //     });
+  //   }
+  //   catch (ex) {
+  //     Scaffold.of(context).showSnackBar(SnackBar(
+  //       content: Text(ex.toString()),
+  //     ));
+  //   }
+  // }
 }

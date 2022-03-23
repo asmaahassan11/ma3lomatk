@@ -13,6 +13,7 @@ import 'package:flutter_auth/home/components/whatsapp.dart';
 import 'package:flutter_auth/home/home1.dart';
 import 'package:flutter_auth/people/people.dart';
 import 'package:flutter_auth/profile/profile_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../constants.dart';
 
@@ -55,7 +56,7 @@ class Body extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'Username',
+                        user.username,
                         style:
                             TextStyle(fontSize: 18, color: Colors.deepPurple),
                       ),
@@ -63,7 +64,7 @@ class Body extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        'username@gmail.com',
+                        user.email,
                         style: TextStyle(fontSize: 14, color: Colors.blueGrey),
                       ),
                     ],
@@ -92,7 +93,15 @@ class Body extends StatelessWidget {
               buildMenuItem(
                 text: 'Logout',
                 icon: Icons.logout,
-                onClicked: () => selectedItem(context, 4),
+                onClicked: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.remove('email');
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (BuildContext ctx) => WelcomeScreen()));
+                },
               ),
             ],
           ),
@@ -100,7 +109,10 @@ class Body extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           toolbarHeight: 40.0, // double
-          title: Text("Home", textAlign: TextAlign.center,),
+          title: Text(
+            "Home",
+            textAlign: TextAlign.center,
+          ),
           centerTitle: true,
           //leadingWidth: 900,
           actions: [
@@ -118,7 +130,7 @@ class Body extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 // SizedBox(height: 200,),
-               /* Row(
+                /* Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -175,15 +187,15 @@ class Body extends StatelessWidget {
                   radius: 40.0,
                 ),
                 Container(
-                    child: Text('Username',
+                    child: Text(user.username,
                         style: TextStyle(
-                            fontSize: 13.0,
+                            fontSize: 16.0,
                             color: Colors.deepPurple,
                             fontFamily: 'Futura',
                             fontWeight: FontWeight.bold))),
                 Container(
                     margin: EdgeInsets.only(top: 12.0),
-                    child: Text('Username@gmail.com',
+                    child: Text(user.email,
                         style: TextStyle(
                             color: Colors.black45,
                             fontWeight: FontWeight.w500,
@@ -203,13 +215,15 @@ class Body extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                               return PeopleScreen();
+                              return PeopleScreen();
                             },
                           ),
                         );
                       },
                     ),
-                    SizedBox(width: size.width * 0.01,),
+                    SizedBox(
+                      width: size.width * 0.01,
+                    ),
                     SmallRoundedButton(
                       text: "Edit Profile",
                       color: kPrimaryLightColor,
@@ -219,7 +233,7 @@ class Body extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                               return ProfileScreen();
+                              return ProfileScreen();
                             },
                           ),
                         );
@@ -232,7 +246,9 @@ class Body extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     Instagram(),
-                    SizedBox(width: size.width * 0.35,),
+                    SizedBox(
+                      width: size.width * 0.35,
+                    ),
                     Snapchat(),
                   ],
                 ),
@@ -241,7 +257,9 @@ class Body extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     FaceBook(),
-                    SizedBox(width: size.width * 0.35,),
+                    SizedBox(
+                      width: size.width * 0.35,
+                    ),
                     Twitter(),
                   ],
                 ),
@@ -250,7 +268,9 @@ class Body extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     TikTok(),
-                    SizedBox(width: size.width * 0.35,),
+                    SizedBox(
+                      width: size.width * 0.35,
+                    ),
                     WhatsApp(),
                   ],
                 ),
@@ -264,6 +284,7 @@ class Body extends StatelessWidget {
       ),
     );
   }
+
   Widget buildHeader({
     @required String urlImage,
     @required String name,

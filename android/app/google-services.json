@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "145504140623",
-    "project_id": "graduation-d37d4",
-    "storage_bucket": "graduation-d37d4.appspot.com"
+    "project_number": "557302315297",
+    "project_id": "graduation-bf501",
+    "storage_bucket": "graduation-bf501.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:145504140623:android:e33127c671fcd07048993a",
+        "mobilesdk_app_id": "1:557302315297:android:8b2e9a5340bf016dcaa660",
         "android_client_info": {
           "package_name": "com.example.flutter_auth"
         }
       },
       "oauth_client": [
         {
-          "client_id": "145504140623-6i4caokv64ct630n6dkr0dhbsveg647b.apps.googleusercontent.com",
+          "client_id": "557302315297-v1ucora6ett2daqpu8b3jlfjrd0i5kgp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBBl4QPBQmUxGDhXuDCc0fm40bxSqadiWc"
+          "current_key": "AIzaSyDCaQKI3jjraI_MBD9eBYRXAcD9XgTPNgk"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "145504140623-6i4caokv64ct630n6dkr0dhbsveg647b.apps.googleusercontent.com",
+              "client_id": "557302315297-v1ucora6ett2daqpu8b3jlfjrd0i5kgp.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
