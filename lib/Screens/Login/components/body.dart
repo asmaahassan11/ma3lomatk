@@ -142,10 +142,8 @@ class Body extends StatelessWidget {
                           .where(KPassword, isEqualTo: password)
                           .snapshots()
                           .first;
-                      // print(value.docs[0].data());
                       user = UserM.fromJson(
                           value.docs[0].data() as Map<String, dynamic>);
-                      // print(user!.username);
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
