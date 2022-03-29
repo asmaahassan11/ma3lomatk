@@ -7,13 +7,12 @@ import 'package:flutter_auth/profile/components/profile_icon.dart';
 import '../../constants.dart';
 
 class FaceBook extends StatefulWidget {
-
   @override
   _FaceBookState createState() => _FaceBookState();
 }
 
 class _FaceBookState extends State<FaceBook> {
-  final  Face=Icons.facebook_rounded;
+  final Face = Icons.facebook_rounded;
   String selectedItem = '';
   @override
   Widget build(BuildContext context) {
@@ -28,13 +27,18 @@ class _FaceBookState extends State<FaceBook> {
           },
         ),
         SizedBox(height: size.height * 0.01),
-        Text("Facebook",
+        Text(
+          "Facebook",
           style: TextStyle(
-              color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal),
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              fontStyle: FontStyle.normal),
         ),
       ],
     );
   }
+
   void onButtonPressed() {
     showModalBottomSheet(
         context: context,
@@ -61,22 +65,35 @@ class _FaceBookState extends State<FaceBook> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text("Facebook",
+        Text(
+          "Facebook",
           style: TextStyle(
-              color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal),
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.normal),
         ),
         SocalIcon(
           iconSrc: "assets/icons/FaceBo.svg",
           press: () {},
         ),
-        SizedBox(height: 10,),
-          ProfileIcon(
-            icon: "assets/icons/FaceBo.svg",
-            text: "Facebook Profile Link",
-            press: () {},
+        SizedBox(
+          height: 10,
+        ),
+        ProfileIcon(
+          icon: "assets/icons/FaceBo.svg",
+          text: "Facebook Profile Link",
+          press: () {},
+        ),
+        Text(
+          " Open the Facebook app and go to your profile. \n Your Facebook Profile Link will be at the top of your \n screen .",
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black45,
           ),
-        Text(" Open the Facebook app and go to your profile. \n Your Facebook Profile Link will be at the top of your \n screen .",textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45,),),
+        ),
         //SizedBox(height: 10,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +113,9 @@ class _FaceBookState extends State<FaceBook> {
                 );
               },
             ),
-            SizedBox(width: size.width * 0.01,),
+            SizedBox(
+              width: size.width * 0.01,
+            ),
             SmallRoundedButton(
               text: "Close",
               color: kPrimaryLightColor,
@@ -134,10 +153,10 @@ class _FaceBookState extends State<FaceBook> {
     );
   }
 
-  void _selectItem(String name) {
-    Navigator.pop(context);
-    setState(() {
-      selectedItem = name;
-    });
-  }
+  // void _selectItem(String name) {
+  //   Navigator.pop(context);
+  //   setState(() {
+  //     selectedItem = name;
+  //   });
+  // }
 }
