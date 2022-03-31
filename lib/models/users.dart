@@ -7,14 +7,21 @@ class UserM {
   String password;
   String rePassword;
   String imageurl;
+  String instagramUrl;
+  String facebookUrl;
+  String whatsappNumber;
 
-  UserM(
-      {this.username,
-      this.email,
-      this.phone,
-      this.password,
-      this.rePassword,
-      this.imageurl});
+  UserM({
+    this.username,
+    this.email,
+    this.phone,
+    this.password,
+    this.rePassword,
+    this.imageurl,
+    this.facebookUrl,
+    this.instagramUrl,
+    this.whatsappNumber,
+  });
 
   UserM.fromJson(Map<String, dynamic> json) {
     username = json['username'];
@@ -24,6 +31,9 @@ class UserM {
     password = json['password'];
     rePassword = json['rePassword'];
     imageurl = json['imageurl'];
+    facebookUrl = json['facebookUrl'];
+    instagramUrl = json['instagramUrl'];
+    whatsappNumber = json['whatsappNumber'];
   }
 
   Map<String, dynamic> toJson() {
@@ -35,6 +45,9 @@ class UserM {
     data['password'] = this.password;
     data['rePassword'] = this.rePassword;
     data['imageurl'] = this.imageurl;
+    data['facebookUrl'] = this.facebookUrl;
+    data['instagramUrl'] = this.instagramUrl;
+    data['whatsappNumber'] = this.whatsappNumber;
 
     return data;
   }

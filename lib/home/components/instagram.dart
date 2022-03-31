@@ -4,10 +4,10 @@ import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/small_rounded_button.dart';
 import 'package:flutter_auth/profile/components/profile_icon.dart';
 
+import '../../components/rounded_social.dart';
 import '../../constants.dart';
 
 class Instagram extends StatefulWidget {
-
   @override
   _InstagramState createState() => _InstagramState();
 }
@@ -27,13 +27,18 @@ class _InstagramState extends State<Instagram> {
           },
         ),
         SizedBox(height: size.height * 0.01),
-        Text("Instagram",
+        Text(
+          "Instagram",
           style: TextStyle(
-              color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal),
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              fontStyle: FontStyle.normal),
         ),
       ],
     );
   }
+
   void onButtonPressed() {
     showModalBottomSheet(
         context: context,
@@ -60,22 +65,32 @@ class _InstagramState extends State<Instagram> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text("Instagram",
+        Text(
+          "Instagram",
           style: TextStyle(
-              color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal),
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.normal),
         ),
         SocalIcon(
           iconSrc: "assets/icons/instagram-round.svg",
           press: () {},
         ),
         //SizedBox(height: 10,),
-        ProfileIcon(
+        RoundedSocial(
           icon: "assets/icons/instagram-round.svg",
-          text: "Instagram Username",
-          press: () {},
+          hintText: "Instagram Username",
         ),
-        Text(" Open the Instagram app and go to your profile. \n Your Instagram username will be at the top of your \n screen .",textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45,),),
+        Text(
+          " Open the Instagram app and go to your profile. \n Your Instagram username will be at the top of your \n screen .",
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black45,
+          ),
+        ),
         //SizedBox(height: 10,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +110,9 @@ class _InstagramState extends State<Instagram> {
                 );
               },
             ),
-           SizedBox(width: size.width * 0.01,),
+            SizedBox(
+              width: size.width * 0.01,
+            ),
             SmallRoundedButton(
               text: "Close",
               color: kPrimaryLightColor,
@@ -113,7 +130,7 @@ class _InstagramState extends State<Instagram> {
             ),
           ],
         ),
-       // SizedBox(height: 10,),
+        // SizedBox(height: 10,),
         RoundedButton(
           text: "Save",
           //color: kPrimaryLightColor,
@@ -123,7 +140,7 @@ class _InstagramState extends State<Instagram> {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                 // return SignUpScreen();
+                  // return SignUpScreen();
                 },
               ),
             );

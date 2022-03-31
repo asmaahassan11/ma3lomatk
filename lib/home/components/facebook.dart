@@ -4,6 +4,7 @@ import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/small_rounded_button.dart';
 import 'package:flutter_auth/profile/components/profile_icon.dart';
 
+import '../../components/rounded_social.dart';
 import '../../constants.dart';
 
 class FaceBook extends StatefulWidget {
@@ -80,10 +81,9 @@ class _FaceBookState extends State<FaceBook> {
         SizedBox(
           height: 10,
         ),
-        ProfileIcon(
+        RoundedSocial(
           icon: "assets/icons/FaceBo.svg",
-          text: "Facebook Profile Link",
-          press: () {},
+          hintText: "Facebook Profile Link",
         ),
         Text(
           " Open the Facebook app and go to your profile. \n Your Facebook Profile Link will be at the top of your \n screen .",

@@ -4,10 +4,10 @@ import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/small_rounded_button.dart';
 import 'package:flutter_auth/profile/components/profile_icon.dart';
 
+import '../../components/rounded_social.dart';
 import '../../constants.dart';
 
 class WhatsApp extends StatefulWidget {
-
   @override
   _WhatsAppState createState() => _WhatsAppState();
 }
@@ -27,13 +27,18 @@ class _WhatsAppState extends State<WhatsApp> {
           },
         ),
         SizedBox(height: size.height * 0.01),
-        Text("WhatsApp",
+        Text(
+          "WhatsApp",
           style: TextStyle(
-              color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.w800, fontStyle: FontStyle.normal),
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.w800,
+              fontStyle: FontStyle.normal),
         ),
       ],
     );
   }
+
   void onButtonPressed() {
     showModalBottomSheet(
         context: context,
@@ -60,22 +65,34 @@ class _WhatsAppState extends State<WhatsApp> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text("WhatsApp",
+        Text(
+          "WhatsApp",
           style: TextStyle(
-              color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal),
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              fontStyle: FontStyle.normal),
         ),
         SocalIcon(
           iconSrc: "assets/icons/whatsapp.svg",
           press: () {},
         ),
-        SizedBox(height: 10,),
-        ProfileIcon(
-          icon: "assets/icons/whatsapp.svg",
-          text: "WhatsApp Username",
-          press: () {},
+        SizedBox(
+          height: 10,
         ),
-        Text(" Open the WhatsAppapp and go to your profile. \n Your WhatsApp Username will be at the top of your \n screen .",textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black45,),),
+        RoundedSocial(
+          icon: "assets/icons/whatsapp.svg",
+          hintText: "WhatsApp Number",
+        ),
+        Text(
+          " Open the WhatsAppapp and go to your profile. \n Your WhatsApp Username will be at the top of your \n screen .",
+          textAlign: TextAlign.center,
+          overflow: TextOverflow.ellipsis,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.black45,
+          ),
+        ),
         //SizedBox(height: 10,),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -95,7 +112,9 @@ class _WhatsAppState extends State<WhatsApp> {
                 );
               },
             ),
-            SizedBox(width: size.width * 0.01,),
+            SizedBox(
+              width: size.width * 0.01,
+            ),
             SmallRoundedButton(
               text: "Close",
               color: kPrimaryLightColor,
