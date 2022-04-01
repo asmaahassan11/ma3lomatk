@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 
 class Icons extends StatelessWidget {
   final IconData icon;
-  final Function press;
+  final VoidCallback? press;
   final Color color, textColor;
   const Icons({
-    Key key,
-    this.icon,
+    Key? key,
+   required this.icon,
     this.press,
     this.color = kPrimaryColor,
     this.textColor = Colors.white,
@@ -33,7 +32,7 @@ class Icons extends StatelessWidget {
   Widget Icon() {
     return
       Icons(
-        icon: icon,
+        icon: icon
       );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/small_rounded_button.dart';
 import 'package:flutter_auth/profile/components/profile_icon.dart';
 
+import '../../Screens/Signup/signup_screen.dart';
 import '../../constants.dart';
 
 class FaceBook extends StatefulWidget {
@@ -107,7 +108,7 @@ class _FaceBookState extends State<FaceBook> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      // return SignUpScreen();
+                      return SignUpScreen();
                     },
                   ),
                 );
@@ -125,7 +126,7 @@ class _FaceBookState extends State<FaceBook> {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      // return SignUpScreen();
+                      return SignUpScreen();
                     },
                   ),
                 );
@@ -143,7 +144,7 @@ class _FaceBookState extends State<FaceBook> {
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  // return SignUpScreen();
+                  return SignUpScreen();
                 },
               ),
             );

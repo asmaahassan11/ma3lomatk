@@ -4,11 +4,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class PeopleSocial extends StatelessWidget {
   final String iconSrc;
-  final Function press;
+  final GestureTapCallback? press;
   const PeopleSocial({
-    Key key,
-    this.iconSrc,
-    this.press,
+    Key? key,
+   required this.iconSrc,
+   required this.press,
   }) : super(key: key);
 
   @override

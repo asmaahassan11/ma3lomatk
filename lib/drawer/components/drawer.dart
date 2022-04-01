@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
-import 'package:flutter_auth/active_nfc/Active_NFC.dart';
 import 'package:flutter_auth/active_nfc/WelcomeNFC.dart';
-import 'package:flutter_auth/active_nfc/active_nfc.dart';
 import 'package:flutter_auth/home/home1.dart';
 import 'package:flutter_auth/profile/profile_screen.dart';
-
-import '../../constants.dart';
 
 class DrawerWidget extends StatelessWidget {
   final padding = EdgeInsets.symmetric(horizontal: 20);
@@ -90,10 +86,10 @@ class DrawerWidget extends StatelessWidget {
   }
 
   Widget buildHeader({
-    @required String urlImage,
-    @required String name,
-    @required String email,
-    @required VoidCallback onClicked,
+    required String urlImage,
+    required String name,
+    required String email,
+    required VoidCallback onClicked,
   }) =>
       InkWell(
         onTap: onClicked,
@@ -129,9 +125,9 @@ class DrawerWidget extends StatelessWidget {
       );
 
   Widget buildMenuItem({
-    @required String text,
-    @required IconData icon,
-    VoidCallback onClicked,
+    required String text,
+    required IconData icon,
+    GestureTapCallback? onClicked,
   }) {
     final color = Colors.deepPurple;
     final hoverColor = Colors.white;

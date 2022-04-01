@@ -1,17 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/constants.dart';
-import 'package:flutter_auth/models/users.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:path/path.dart' as p;
-import 'package:flutter_auth/constants.dart';
 
 class ProfilePic extends StatefulWidget {
   const ProfilePic({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -21,8 +19,8 @@ class ProfilePic extends StatefulWidget {
 class _ProfilePicState extends State<ProfilePic> {
   TextEditingController img = TextEditingController();
   final imagePicker = ImagePicker();
-  File image;
-  String imageurl;
+  File? image;
+  String? imageurl;
   final CollectionReference users =
       FirebaseFirestore.instance.collection('users');
   @override
@@ -37,7 +35,7 @@ class _ProfilePicState extends State<ProfilePic> {
         children: [
           CircleAvatar(
             // backgroundImage: AssetImage("assets/images/girl.png"),
-            backgroundImage: image == null ? null : FileImage(image),
+            backgroundImage: image == null ? null : FileImage(image!),
             radius: 80,
           ),
           Positioned(
@@ -86,7 +84,7 @@ class _ProfilePicState extends State<ProfilePic> {
   void getImage() async {
     var img = await imagePicker.pickImage(source: ImageSource.gallery);
     setState(() {
-      image = File(img.path);
+      image = File(img!.path);
     });
   }
 
@@ -94,9 +92,9 @@ class _ProfilePicState extends State<ProfilePic> {
     try {
       FirebaseStorage storage = FirebaseStorage.instanceFor(
           bucket: 'gs://graduation-bf501.appspot.com');
-      Reference ref = storage.ref().child(p.basename(image.path));
+      Reference ref = storage.ref().child(p.basename(image!.path));
 
-      UploadTask uploadTask = ref.putFile(image);
+      UploadTask uploadTask = ref.putFile(image!);
 
       TaskSnapshot taskSnapshot = await uploadTask;
       Scaffold.of(context).showSnackBar(

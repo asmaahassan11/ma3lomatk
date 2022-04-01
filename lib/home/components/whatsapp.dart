@@ -85,14 +85,14 @@ class _WhatsAppState extends State<WhatsApp> {
               color: kPrimaryLightColor,
               textColor: Colors.deepPurple,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      // return SignUpScreen();
-                    },
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       // return SignUpScreen();
+                //     },
+                //   ),
+                // );
               },
             ),
             SizedBox(width: size.width * 0.01,),
@@ -101,14 +101,14 @@ class _WhatsAppState extends State<WhatsApp> {
               color: kPrimaryLightColor,
               textColor: Colors.deepPurple,
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      // return SignUpScreen();
-                    },
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       // return SignUpScreen();
+                //     },
+                //   ),
+                // );
               },
             ),
           ],
@@ -119,14 +119,14 @@ class _WhatsAppState extends State<WhatsApp> {
           //color: kPrimaryLightColor,
           textColor: Colors.white,
           press: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
-                  // return SignUpScreen();
-                },
-              ),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(
+            //     builder: (context) {
+            //       // return SignUpScreen();
+            //     },
+            //   ),
+            // );
           },
         ),
       ],

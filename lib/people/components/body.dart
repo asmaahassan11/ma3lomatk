@@ -11,14 +11,14 @@ import 'background.dart';
 
 class Body extends StatelessWidget {
   const Body({
-    Key key,
+    Key? key,
     this.text,
     this.icon,
     this.press,
   }) : super(key: key);
 
-  final String text, icon;
-  final VoidCallback press;
+  final String? text, icon;
+  final VoidCallback? press;
 
   @override
   Widget build(BuildContext context) {
@@ -155,10 +155,10 @@ class Body extends StatelessWidget {
   }
 
   Widget buildHeader({
-    @required String urlImage,
-    @required String name,
-    @required String email,
-    @required VoidCallback onClicked,
+    required String urlImage,
+    required String name,
+    required String email,
+    required  GestureTapCallback? onClicked,
   }) =>
       InkWell(
         onTap: onClicked,
@@ -195,9 +195,9 @@ class Body extends StatelessWidget {
       );
 
   Widget buildMenuItem({
-    @required String text,
-    @required IconData icon,
-    VoidCallback onClicked,
+    required String text,
+    required IconData icon,
+    GestureTapCallback? onClicked,
   }) {
     final color = Colors.deepPurple;
     final hoverColor = Colors.white;

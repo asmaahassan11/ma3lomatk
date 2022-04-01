@@ -8,14 +8,14 @@ import '../../../constants.dart';
 
 class PeopleIcon extends StatelessWidget {
   const PeopleIcon({
-    Key key,
-    this.text,
-    this.icon,
-    this.Stext,
-    this.press,
+    Key? key,
+  required this.text,
+  required this.icon,
+   this.Stext,
+  required this.press,
   }) : super(key: key);
 
-  final String text, icon, Stext;
+  final String? text, icon, Stext;
   //final IconData icon;
   final VoidCallback press;
 
@@ -35,7 +35,7 @@ class PeopleIcon extends StatelessWidget {
         child: Row(
           children: [
             PeopleSocial(
-              iconSrc: icon,
+              iconSrc: icon??'',
               press: () {},
             ),
             //SizedBox(width: 20),
@@ -44,7 +44,7 @@ class PeopleIcon extends StatelessWidget {
                 color: Colors.black45, fontSize: 14, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal),
             )),*/
             Expanded(child: Text(
-              text, style: TextStyle(
+              text??'', style: TextStyle(
                 color: Colors.black45, fontSize: 14, fontWeight: FontWeight.bold, fontStyle: FontStyle.normal),
             )),
             Icon(Icons.play_circle_outline, color: Colors.black45),

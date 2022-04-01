@@ -3,14 +3,13 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Login/login_screen.dart';
 import 'package:flutter_auth/Screens/Welcome/welcome_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/home/home1.dart';
 import 'package:flutter_auth/models/users.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-String finalEmail, finalPass;
+String? finalEmail, finalPass;
 
 class initial extends StatefulWidget {
   static String id = 'initial';
@@ -28,7 +27,7 @@ class _initialState extends State<initial> {
               context,
               MaterialPageRoute(
                   builder: (BuildContext ctx) =>
-                      finalEmail == null || finalEmail.isEmpty
+                      finalEmail == null && finalEmail!.isEmpty
                           ? WelcomeScreen()
                           : Home())));
     });
@@ -69,7 +68,7 @@ class _initialState extends State<initial> {
           builder: (BuildContext context) => Home(),
         ),
       );
-      print(user.username);
+      print(user?.username);
       // Navigator.pushNamed(context, profile.id,
       //     arguments: {
       //       KUsername: user!.username,

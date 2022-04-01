@@ -3,14 +3,15 @@ import 'package:flutter_auth/components/text_field_container.dart';
 import 'package:flutter_auth/constants.dart';
 
 class ProfileField extends StatelessWidget {
-  final String hintText;
+  final String? hintText;
   final TextEditingController Controller;
-  final Function(String) onChanged;
+  final Function(String)? onChanged;
+
   const ProfileField({
-    Key key,
-    this.hintText,
-    this.Controller,
-    this.onChanged,
+    Key? key,
+     this.hintText,
+    required this.Controller,
+     this.onChanged,
   }) : super(key: key);
 
   @override

@@ -7,12 +7,13 @@ class RoundedMopileField extends StatelessWidget {
   final IconData icon;
   final TextEditingController Controller;
   final Function(String) onChanged;
+
   const RoundedMopileField({
-    Key key,
-    this.hintText,
-    this.Controller,
+    Key? key,
+    required this.hintText,
+    required this.Controller,
     this.icon = Icons.phone,
-    this.onChanged,
+    required this.onChanged,
   }) : super(key: key);
 
   @override
@@ -31,7 +32,7 @@ class RoundedMopileField extends StatelessWidget {
           border: InputBorder.none,
         ),
         validator: (value) {
-          if (value.isEmpty) {
+          if (value == null && value == '') {
             return 'Required !';
           }
           return null;

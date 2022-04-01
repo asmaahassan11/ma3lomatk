@@ -8,11 +8,11 @@ class RoundedInputField extends StatelessWidget {
   final TextEditingController Controller;
   final Function(String) onChanged;
   const RoundedInputField({
-    Key key,
-    this.hintText,
-    this.Controller,
+    Key? key,
+   required this.hintText,
+    required this.Controller,
     this.icon = Icons.person,
-    this.onChanged,
+    required  this.onChanged,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class RoundedInputField extends StatelessWidget {
           border: InputBorder.none,
         ),
         validator: (value) {
-          if (value.isEmpty) {
+          if (value == null && value == '') {
             return 'Required !';
           }
           return null;

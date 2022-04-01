@@ -20,15 +20,15 @@ import '../../../constants.dart';
 import '../../../models/users.dart';
 
 class Body extends StatelessWidget {
-  String email, password;
+  String? email, password;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
-  final bool login;
+   bool login = true;
   Body({
-    Key key,
+    Key? key,
     this.login = true,
   }) : super(key: key);
 
@@ -130,7 +130,7 @@ class Body extends StatelessWidget {
                       await SharedPreferences.getInstance();
                   prefs.setString('email', emailController.text);
                   prefs.setString('password', passwordController.text);
-                  if (formkey.currentState.validate()) {
+                  if (formkey.currentState!.validate()) {
                     // islooding = true;
                     // setState(() {});
                     try {
@@ -199,6 +199,6 @@ class Body extends StatelessWidget {
 
   Future<void> loginUser() async {
     UserCredential userCredential = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
+        .signInWithEmailAndPassword(email: email??'', password: password??'');
   }
 }

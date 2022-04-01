@@ -3,12 +3,13 @@ import 'package:flutter_auth/constants.dart';
 
 class SmallRoundedButton extends StatelessWidget {
   final String text;
-  final Function press;
+  final VoidCallback? press;
   final Color color, textColor;
+
   const SmallRoundedButton({
-    Key key,
-    this.text,
-    this.press,
+    Key? key,
+    required this.text,
+    required this.press,
     this.color = kPrimaryColor,
     this.textColor = Colors.white,
   }) : super(key: key);
@@ -30,18 +31,21 @@ class SmallRoundedButton extends StatelessWidget {
   //Here we have to apply customizations to Button by inheriting the styleFrom
 
   Widget newElevatedButton() {
-    return
-      ElevatedButton(
-        child: Text(
-          text,
-          style: TextStyle(color: textColor,),
+    return ElevatedButton(
+      child: Text(
+        text,
+        style: TextStyle(
+          color: textColor,
         ),
-        onPressed: press,
-        style: ElevatedButton.styleFrom(
-            primary: color,
-            padding: EdgeInsets.symmetric(horizontal: 35, vertical: 18),
-            textStyle: TextStyle(
-                color: Colors.deepPurple, fontSize: 14, fontWeight: FontWeight.w700)),
-      );
+      ),
+      onPressed: press,
+      style: ElevatedButton.styleFrom(
+          primary: color,
+          padding: EdgeInsets.symmetric(horizontal: 35, vertical: 18),
+          textStyle: TextStyle(
+              color: Colors.deepPurple,
+              fontSize: 14,
+              fontWeight: FontWeight.w700)),
+    );
   }
 }

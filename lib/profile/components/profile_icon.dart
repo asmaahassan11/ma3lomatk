@@ -7,10 +7,10 @@ import '../../../constants.dart';
 
 class ProfileIcon extends StatelessWidget {
   const ProfileIcon({
-    Key key,
-    this.text,
-    this.icon,
-    this.press,
+    Key? key,
+   required this.text,
+   required this.icon,
+   required this.press,
   }) : super(key: key);
 
   final String text, icon;

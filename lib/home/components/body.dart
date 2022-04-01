@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
   final Color color;
 
   const Body({
-    Key key,
+    Key? key,
     this.login = true,
     this.color = kPrimaryColor,
   }) : super(key: key);
@@ -56,7 +56,7 @@ class Body extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        user.username,
+                        user?.username??'',
                         style:
                             TextStyle(fontSize: 18, color: Colors.deepPurple),
                       ),
@@ -64,7 +64,7 @@ class Body extends StatelessWidget {
                         height: 10,
                       ),
                       Text(
-                        user.email,
+                        user?.email??'',
                         style: TextStyle(fontSize: 14, color: Colors.blueGrey),
                       ),
                     ],
@@ -187,7 +187,7 @@ class Body extends StatelessWidget {
                   radius: 40.0,
                 ),
                 Container(
-                    child: Text(user.username,
+                    child: Text(user?.username??'',
                         style: TextStyle(
                             fontSize: 16.0,
                             color: Colors.deepPurple,
@@ -195,7 +195,7 @@ class Body extends StatelessWidget {
                             fontWeight: FontWeight.bold))),
                 Container(
                     margin: EdgeInsets.only(top: 12.0),
-                    child: Text(user.email,
+                    child: Text(user?.email??'',
                         style: TextStyle(
                             color: Colors.black45,
                             fontWeight: FontWeight.w500,
@@ -286,10 +286,10 @@ class Body extends StatelessWidget {
   }
 
   Widget buildHeader({
-    @required String urlImage,
-    @required String name,
-    @required String email,
-    @required VoidCallback onClicked,
+    required String urlImage,
+    required String name,
+    required String email,
+    required VoidCallback onClicked,
   }) =>
       InkWell(
         onTap: onClicked,
@@ -325,9 +325,9 @@ class Body extends StatelessWidget {
       );
 
   Widget buildMenuItem({
-    @required String text,
-    @required IconData icon,
-    VoidCallback onClicked,
+    required String text,
+    required IconData icon,
+    VoidCallback? onClicked,
   }) {
     final color = Colors.deepPurple;
     final hoverColor = Colors.white;

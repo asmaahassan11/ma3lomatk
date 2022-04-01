@@ -4,10 +4,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SmallSocalIcon extends StatelessWidget {
   final String iconSrc;
-  final Function press;
+  final GestureTapCallback? press;
   const SmallSocalIcon({
-    Key key,
-    this.iconSrc,
+    Key? key,
+  required  this.iconSrc,
     this.press,
   }) : super(key: key);
 

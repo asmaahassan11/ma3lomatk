@@ -7,12 +7,13 @@ class RoundedEmailField extends StatelessWidget {
   final IconData icon;
   final TextEditingController Controller;
   final Function(String) onChanged;
+
   const RoundedEmailField({
-    Key key,
-    this.hintText,
-    this.Controller,
+    Key? key,
+    required this.hintText,
+    required this.Controller,
     this.icon = Icons.email_outlined,
-    this.onChanged,
+    required this.onChanged,
   }) : super(key: key);
 
   @override

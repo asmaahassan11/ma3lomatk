@@ -9,6 +9,6 @@ const KEmail = 'email';
 const KPhone = 'phone';
 const KPassword = 'password';
 const KRePassword = 'rePassword';
-const KImg = "imageurl";
+const KImg = "imageUrl";
 
-UserM user;
+UserM? user;

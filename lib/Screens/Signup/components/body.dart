@@ -20,7 +20,7 @@ import 'package:flutter_auth/models/users.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
-  static String username, email, phone, password, rePassword;
+  static String? username, email, phone, password, rePassword;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
@@ -119,7 +119,7 @@ class Body extends StatelessWidget {
                         onPressed: () async {
                           var auth = FirebaseAuth.instance;
 
-                          if (formkey.currentState.validate()) {
+                          if (formkey.currentState!.validate()) {
                             // islooding = true;
                             // setState(() {});
                             try {
@@ -222,6 +222,6 @@ class Body extends StatelessWidget {
 
   Future<void> registeruser() async {
     UserCredential user = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
+        .createUserWithEmailAndPassword(email: email??'', password: password??'');
   }
 }
