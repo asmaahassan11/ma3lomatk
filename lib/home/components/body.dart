@@ -49,7 +49,7 @@ class Body extends StatelessWidget {
                         width: 70,
                         height: 70,
                         child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/images/girl.png'),
+                          backgroundImage: NetworkImage(user.imageUrl),
                         ),
                       ),
                       SizedBox(
@@ -181,9 +181,7 @@ class Body extends StatelessWidget {
                   height: size.height * 0.12,
                 ),
                 CircleAvatar(
-                  backgroundImage: AssetImage(
-                    "assets/images/girl.png",
-                  ),
+                  backgroundImage: NetworkImage(user.imageUrl),
                   radius: 40.0,
                 ),
                 Container(
